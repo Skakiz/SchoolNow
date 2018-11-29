@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_287904_schoolnow.FactoryM2M</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>FactoryM2M</name>
+        <script><![CDATA[var FactoryM2M = Class.create();
+FactoryM2M.prototype = {
+	initialize: function() {
+		this.entity = null;
+		gs.debug('FactoryM2M.initialize()');
+    },
+		
+	get: function(table, val1, val2) {
+		gs.debug('FactoryM2M.get ' + table + ' val1 : ' + val1 + ', val2 : ' +val2);
+		this._getEnityType(table);		
+		this.entity.getM2M(val1, val2);
+		gs.debug('FactoryM2M get result : ' + this.entity.toString());
+		
+		return this.entity;
+	},
+		
+	create: function(table, val1, val2) {
+		gs.debug('create ' + table + ' val1 : ' + val1 + ', val2 : ' +val2);
+		this._getEnityType(table);		
+		return this.entity.addM2M(val1, val2);
+	},
+	
+	deleteRecord: function(table, val1, val2) {
+		gs.debug('deleteRecord ' + table + ' val1 : ' + val1 + ', val2 : ' +val2);
+		this._getEnityType(table);		
+		return this.entity.deleteM2M(val1, val2);
+	},
+	
+	_getEnityType : function(table) {
+		if(table == 'sys_user_grmember' || table == 'GroupMember') {
+			this.entity = new GroupMember();
+		}
+		else if(table == 'x_287904_schoolnow_m2m_schools_educator' || table == 'Educator') {
+			this.entity = new Educator();
+		}
+		else if(table == 'x_287904_schoolnow_m2m_schools_janitors'  || table == 'Janitor') {
+			this.entity = new Janitor();
+		}
+		else if(table == 'x_287904_schoolnow_m2m_schools_kitchen'  || table == 'Kitchen') {
+			this.entity = new Kitchen();
+		}
+		else if(table == 'x_287904_schoolnow_m2m_users_schools'  || table == 'Principal') { 
+			gs.info('Principal');
+			this.entity = new Principal('x_287904_schoolnow_m2m_users_schools', '');
+		}
+		
+		return this.entity;
+	},
+
+    type: 'FactoryM2M'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-27 14:52:09</sys_created_on>
+        <sys_id>563e7edbdbdd2300a94e146139961946</sys_id>
+        <sys_mod_count>33</sys_mod_count>
+        <sys_name>FactoryM2M</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_script_include_563e7edbdbdd2300a94e146139961946</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-06 20:27:36</sys_updated_on>
+    </sys_script_include>
+</record_update>

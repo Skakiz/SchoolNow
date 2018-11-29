@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_287904_schoolnow.GroupUtil</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>GroupUtil</name>
+        <script><![CDATA[var GroupUtil = Class.create();
+GroupUtil.prototype = {
+    initialize: function() {
+    },
+
+	createGroup : function(name, type, description, manager, email) {
+		
+		gs.debug('createGroup, name : ' + name);
+		var resultSysId = null;
+		var exists = true;
+		var count = 1;
+		var groupTypeSysId = this.getGroupType(type);
+		
+		while(exists && count < 10) {
+			var gr = this.getGroup(name);
+
+			if(gr != null) { 
+				count++;
+				name = name + " " + count;
+			}
+			else 
+				exists = false;
+		}
+		
+		if(!exists) {
+			var gr = new GlideRecord('sys_user_group');
+			gr.initialize();
+			gr.setValue('name', name);
+			gr.setValue('type', groupTypeSysId);
+			gr.setValue('description', description);
+			if(manager)
+				gr.setValue('manager', manager);
+			if(email)
+				gr.setValue('email', email);
+
+			resultSysId = gr.insert();
+			
+			var role = null;
+			if(type == 'SchoolNow Principals') {
+				role = this.getRole('x_287904_schoolnow.Principal');
+				this.connectRoleAndGroup(role, resultSysId);
+			} 
+			else if(type == 'SchoolNow Educators') {
+				role = this.getRole('x_287904_schoolnow.Educator');
+				this.connectRoleAndGroup(role, resultSysId);
+			} 
+			else if(type == 'SchoolNow Kitchen Staff') {
+				role = this.getRole('x_287904_schoolnow.Kitchen_staff');
+				this.connectRoleAndGroup(role, resultSysId);
+			} 
+			else if(type == 'SchoolNow Janitor') {
+				role = this.getRole('x_287904_schoolnow.Janitor');
+				this.connectRoleAndGroup(role, resultSysId);
+			} 
+		}
+		
+		return resultSysId;
+	},
+	
+	getGroup : function(name) {
+		var gr = new GlideRecord('sys_user_group');
+		gr.addQuery('name' , name);
+		gr.query();
+		
+		if(gr.next())
+			return gr;
+		
+		return null;
+	},
+	
+	getGroupType: function(name) {
+		var gr = new GlideRecord('sys_user_group_type');
+		gr.addQuery('name' , name);
+		gr.query();
+		
+		if(gr.next())
+			return gr.getValue('sys_id');
+		
+		return null;
+	},
+
+	connectRoleAndGroup : function(role, group) {
+		var gr = new GlideRecord('sys_group_has_role');
+		gr.setValue('role' , role);
+		gr.setValue('group', group);
+		gr.update();
+	},
+	
+	getRole: function(name) {
+		var gr = new GlideRecord('sys_user_role');
+		gr.addQuery('name' , name);
+		gr.query();
+		
+		if(gr.next())
+			return gr.getValue('sys_id');
+		
+		return null;
+	},	
+	
+	addUserGroup : function(userId, groupId) { 
+		var gr = this.getGroupMemmber(userId, groupId);
+		
+		if(gr == null) {
+			gr = new GlideRecord('sys_user_grmember');
+			gr.newRecord();
+			gr.setValue('user',userId);
+			gr.setValue('group',groupId);
+			gr.insert();
+		}
+		
+		return gr.getValue('sys_id');
+	},
+	
+	addPrincipal : function(principalId, schoolId) {
+		this.addToM2M('principal',principalId, 'school', schoolId, 'x_287904_schoolnow_m2m_users_schools');
+	},
+		
+	getGroupMemmber : function(groupId, userId) {
+		var gr = new GlideRecord('sys_user_grmember');
+		gr.addQuery('user',userId);
+		gr.addQuery('group',groupId);
+		gr.query();
+		
+		if(gr.next())
+			return gr;
+		
+		return null;
+	}, 
+	
+	addToM2M : function(collumn1, val1, collumn2, val2, table) {
+		var gr = new GlideRecord(table);
+		gr.newRecord();
+		gr.setValue(collumn1, val1);
+		gr.setValue(collumn2, val2);
+
+		if(gr.insert())
+			return gr;
+		
+		return null;
+	},
+	
+	
+    type: 'GroupUtil'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-26 10:40:11</sys_created_on>
+        <sys_id>3762c50bdb912300a94e1461399619b4</sys_id>
+        <sys_mod_count>13</sys_mod_count>
+        <sys_name>GroupUtil</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_script_include_3762c50bdb912300a94e1461399619b4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-13 18:01:01</sys_updated_on>
+    </sys_script_include>
+</record_update>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_287904_schoolnow.Principal</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Principal</name>
+        <script><![CDATA[var Principal = Class.create();
+Principal.prototype = Object.extendsObject(EntityBase, {
+    _initialize: function(tableName /* optional */, sysId /* optional */) {
+		gs.debug('Principal._initialize : ' + tableName.getValue('principal'));
+		
+		this.principal = tableName.getValue('principal');
+		
+		if(this.isObject(tableName)){
+			gs.debug('Principal isObject');
+			this._gr = tableName;
+		}
+		else {
+			gs.debug('Principal set');
+			this._sysId = sysId;
+			this._tableName = tableName;
+		}
+
+		this.baseInit();
+		
+		gs.debug('Principal._initialize  2 : ' + this._tableName);
+    },
+	
+	removeGroup : function(group_sysId) {
+	
+		var groupMember = new x_287904_schoolnow.GroupMember();
+		var gr = groupMember.getM2M(group_sysId, this.principal);
+		
+		if(groupMember.exists())
+			gr.deleteRecord();
+		/*
+		var util = new x_287904_schoolnow.FactoryM2M();
+		gs.debug('removeGroup ' + group_sysId + ' for ' + this.toString() + ' principal : '  + this.getValue('principal'));
+			
+		var enity = util.get('GroupMember', group_sysId, this.getValue('principal'));	
+		if(enity.exists()) {
+			enity.deleteRecord();
+		}
+		*/
+		
+		//util.deleteRecord('GroupMember', group_sysId, this.getValue('principal'));
+	},
+	
+	addGroup : function (group_sysId) {
+		util = new x_287904_schoolnow.FactoryM2M();
+		gs.debug('addGroup ' + group_sysId + ', user : '+ this.getValue('principal'));
+	
+		var enity = util.get('GroupMember', group_sysId, this.getValue('principal'));		
+		gs.debug('addGroup before exisit');
+		
+		if(!enity.exists()) {
+			gs.debug('addGroup dont exists, create it!');
+			util.create('GroupMember', group_sysId, this.getValue('principal'));
+		}
+		else {
+			gs.debug('addGroup exists, dont create it!');
+		}
+	},
+	
+	col1: 'school',
+	col2: 'principal',
+	
+    type: 'Principal'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-27 12:10:07</sys_created_on>
+        <sys_id>dea3e65fdb9d2300a94e1461399619c7</sys_id>
+        <sys_mod_count>76</sys_mod_count>
+        <sys_name>Principal</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_script_include_dea3e65fdb9d2300a94e1461399619c7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-13 15:03:23</sys_updated_on>
+    </sys_script_include>
+</record_update>

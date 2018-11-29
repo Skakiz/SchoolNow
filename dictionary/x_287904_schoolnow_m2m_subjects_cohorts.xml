@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Subjects on Cohorts" max_length="40" name="x_287904_schoolnow_m2m_subjects_cohorts" type="collection">
+        <element label="Cohort" max_length="32" name="cohort" reference="x_287904_schoolnow_cohort" type="reference"/>
+        <element label="Subject" max_length="32" name="subject" reference="x_287904_schoolnow_subject" type="reference"/>
+        <index name="index">
+            <element name="subject"/>
+        </index>
+        <index name="index2">
+            <element name="cohort"/>
+        </index>
+    </element>
+</database>

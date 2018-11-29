@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="announcement">
+    <announcement action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <click_target/>
+        <details/>
+        <details_link_text/>
+        <details_page/>
+        <details_url/>
+        <dismiss_options>dismissible</dismiss_options>
+        <display_first>true</display_first>
+        <display_style display_value="Normal">704dedd6e7d4030075c2a117c2f6a91b</display_style>
+        <from>2018-11-15 16:16:35</from>
+        <glyph>envelope-o</glyph>
+        <glyph_alt_text/>
+        <name>Skolan presenterar SchoolNow</name>
+        <public>true</public>
+        <roles/>
+        <summary>Vi har ny ett nytt skol system som är en upp fräshning från det gamla systemet.</summary>
+        <sys_class_name>announcement</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-11-15 16:17:42</sys_created_on>
+        <sys_id>24325129db312300a94e146139961920</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Skolan presenterar SchoolNow</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>announcement_24325129db312300a94e146139961920</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-15 16:17:42</sys_updated_on>
+        <title>Skolan presenterar SchoolNow</title>
+        <to/>
+        <type>67eaf134e7a3320075c2a117c2f6a9d2,52fa79f8e763320075c2a117c2f6a991</type>
+    </announcement>
+    <sys_translated_text action="delete_multiple" query="documentkey=24325129db312300a94e146139961920"/>
+</record_update>

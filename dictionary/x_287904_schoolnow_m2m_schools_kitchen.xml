@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Kitchen Staff" max_length="40" name="x_287904_schoolnow_m2m_schools_kitchen" type="collection">
+        <element display="true" label="Kitchen staff" max_length="32" name="kitchen_staff" reference="sys_user" type="reference"/>
+        <element label="School" max_length="32" name="school" reference="x_287904_schoolnow_school" type="reference"/>
+        <index name="index">
+            <element name="kitchen_staff"/>
+        </index>
+        <index name="index2">
+            <element name="school"/>
+        </index>
+    </element>
+</database>

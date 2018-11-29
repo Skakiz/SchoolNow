@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" extends="task" label="Lesson" max_length="40" name="x_287904_schoolnow_lesson" sizeclass="3" type="collection">
+        <element label="Book" max_length="32" name="book" reference="x_287904_schoolnow_book" type="reference"/>
+        <element label="class" mandatory="true" max_length="32" name="class" reference="x_287904_schoolnow_class" type="reference"/>
+        <element label="Educator" mandatory="true" max_length="32" name="educator" reference="x_287904_schoolnow_m2m_schools_educator" type="reference"/>
+        <element label="Pages" max_length="32" name="pages" type="string"/>
+        <element label="Room" mandatory="true" max_length="32" name="room" reference="x_287904_schoolnow_classroom" type="reference"/>
+        <element label="School" max_length="32" name="school" reference="x_287904_schoolnow_school" type="reference"/>
+        <element label="Subject" mandatory="true" max_length="32" name="subject" reference="x_287904_schoolnow_subject" type="reference"/>
+    </element>
+</database>

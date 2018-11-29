@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_metadata_link">
+    <sys_metadata_link action="INSERT_OR_UPDATE">
+        <directory>update</directory>
+        <documentkey>cff57c03db912300a94e1461399619b6</documentkey>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_group_type">
+    <sys_user_group_type action="INSERT_OR_UPDATE">
+        <description>This is part of the SchoolNow Application</description>
+        <name>SchoolNow Principals</name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-26 09:32:45</sys_created_on>
+        <sys_id>cff57c03db912300a94e1461399619b6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-26 09:32:45</sys_updated_on>
+    </sys_user_group_type>
+</record_update>
+]]></payload>
+        <sys_class_name>sys_metadata_link</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-26 09:35:28</sys_created_on>
+        <sys_id>35b67443db912300a94e14613996192c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>SchoolNow Principals</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_metadata_link_35b67443db912300a94e14613996192c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-26 09:35:28</sys_updated_on>
+        <tablename>sys_user_group_type</tablename>
+    </sys_metadata_link>
+</record_update>

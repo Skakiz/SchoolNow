@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_instance">
+    <sp_instance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <class_name/>
+        <color>default</color>
+        <css/>
+        <glyph/>
+        <id/>
+        <order>1</order>
+        <roles/>
+        <short_description/>
+        <size>md</size>
+        <sp_column display_value="2">e1df01a5db312300a94e146139961995</sp_column>
+        <sp_widget display_value="Reports List">8c84af454f632200df2b5a701310c7e5</sp_widget>
+        <sys_class_name>sp_instance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-11-15 16:05:47</sys_created_on>
+        <sys_id>5edf81a5db312300a94e1461399619a9</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sp_instance_5edf81a5db312300a94e1461399619a9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-15 16:09:11</sys_updated_on>
+        <title/>
+        <url/>
+        <widget_parameters><![CDATA[{
+	"no_of_reports_to_show": {
+		"value": null,
+		"displayValue": ""
+	},
+	"show_back_to_home": {
+		"value": "false",
+		"displayValue": "false"
+	},
+	"filter": {
+		"value": "tableLIKEx_287904_schoolnow_lesson",
+		"displayValue": "tableLIKEx_287904_schoolnow_lesson"
+	}
+}]]></widget_parameters>
+    </sp_instance>
+    <sys_translated_text action="delete_multiple" query="documentkey=5edf81a5db312300a94e1461399619a9"/>
+</record_update>

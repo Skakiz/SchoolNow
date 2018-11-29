@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl_role">
+    <sys_security_acl_role action="INSERT_OR_UPDATE">
+        <sys_class_name>sys_security_acl_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-11-13 19:16:45</sys_created_on>
+        <sys_id>8c682b74dbf12300a94e146139961990</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_287904_schoolnow_subject.x_287904_schoolnow.subject_user</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_security_acl display_value="x_287904_schoolnow_subject">44682b74dbf12300a94e14613996198e</sys_security_acl>
+        <sys_update_name>sys_security_acl_role_8c682b74dbf12300a94e146139961990</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-13 19:16:45</sys_updated_on>
+        <sys_user_role display_value="x_287904_schoolnow.subject_user" name="x_287904_schoolnow.subject_user">4068eb34dbf12300a94e1461399619cd</sys_user_role>
+        <transaction_id/>
+    </sys_security_acl_role>
+</record_update>

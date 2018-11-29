@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="" label="Classroom" language="en" table="x_287904_schoolnow_classroom">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element/>
+            <help/>
+            <hint/>
+            <label>Classroom</label>
+            <language>en</language>
+            <name>x_287904_schoolnow_classroom</name>
+            <plural>Classrooms</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-11-13 19:02:16</sys_created_on>
+            <sys_id>8815abb0dbf12300a94e1461399619dc</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Classroom</sys_name>
+            <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+            <sys_update_name>sys_documentation_x_287904_schoolnow_classroom__en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-11-13 19:02:16</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

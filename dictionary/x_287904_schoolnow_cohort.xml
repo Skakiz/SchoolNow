@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Cohort" max_length="40" name="x_287904_schoolnow_cohort" type="collection">
+        <element calculation="(function calculatedFieldValue(current) {&#13;&#10;&#13;&#10;&#9;// Add your code here&#13;&#10;&#9;return current.getValue('year');&#13;&#10;&#13;&#10;})(current);" display="true" label="Display" max_length="100" name="display" type="string" virtual="true"/>
+        <element label="Number" max_length="40" name="number" type="integer"/>
+        <element label="Principal" max_length="32" name="principal" reference="x_287904_schoolnow_m2m_users_schools" reference_qual="roles=x_287904_schoolnow.Principal^EQ" reference_qual_condition="roles=x_287904_schoolnow.Principal^EQ" type="reference"/>
+        <element label="School" mandatory="true" max_length="32" name="school" reference="x_287904_schoolnow_school" type="reference"/>
+        <element label="Year" mandatory="true" max_length="4" name="year" type="string"/>
+        <index name="index">
+            <element name="principal"/>
+        </index>
+        <index name="index2">
+            <element name="school"/>
+        </index>
+    </element>
+</database>

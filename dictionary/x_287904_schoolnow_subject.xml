@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Subject" max_length="40" name="x_287904_schoolnow_subject" type="collection">
+        <element label="Description" max_length="4000" name="description" type="string"/>
+        <element label="Head of subject" max_length="32" name="head_of_subject" reference="sys_user" type="reference"/>
+        <element display="true" label="Subject" mandatory="true" max_length="40" name="subject" type="string"/>
+        <index name="index">
+            <element name="head_of_subject"/>
+        </index>
+    </element>
+</database>

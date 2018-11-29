@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_287904_schoolnow.Educator</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>Educator</name>
+        <script><![CDATA[var Educator = Class.create();
+Educator.prototype = Object.extendsObject(EntityBase, {
+    _initialize: function(tableName /* optional */, sysId /* optional */) {
+		gs.debug('Educator._initialize : ' + tableName.getValue('user'));
+		
+		this.user = tableName.getValue('user');
+		
+		if(this.isObject(tableName)){
+			gs.debug('Educator isObject');
+			this._gr = tableName;
+		}
+		else {
+			gs.debug('Educator set');
+			this._sysId = sysId;
+			this._tableName = tableName;
+		}
+
+		this.baseInit();
+    },
+	
+	removeGroup : function(group_sysId) {
+	
+		var groupMember = new x_287904_schoolnow.GroupMember();
+		var gr = groupMember.getM2M(group_sysId, this.user);
+		
+		if(groupMember.exists())
+			gr.deleteRecord();
+	},
+	
+	addGroup : function (group_sysId) {
+		util = new x_287904_schoolnow.FactoryM2M();
+		gs.debug('addGroup ' + group_sysId + ', user : '+ this.user);
+	
+		var enity = util.get('GroupMember', group_sysId, this.user);		
+		gs.debug('addGroup before exisit');
+		
+		if(!enity.exists()) {
+			gs.debug('addGroup dont exists, create it!');
+			util.create('GroupMember', group_sysId, this.user);
+		}
+		else {
+			gs.debug('addGroup exists, dont create it!');
+		}
+	},
+	
+	col1: 'school',
+	col2: 'user',
+	
+    type: 'Educator'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-11-13 15:09:29</sys_created_on>
+        <sys_id>c6cf6e3cdb312300a94e14613996190e</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>Educator</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_script_include_c6cf6e3cdb312300a94e14613996190e</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-13 15:23:14</sys_updated_on>
+    </sys_script_include>
+</record_update>

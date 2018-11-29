@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_287904_schoolnow.EntityBase</api_name>
+        <client_callable>false</client_callable>
+        <description/>
+        <name>EntityBase</name>
+        <script><![CDATA[var EntityBase = Class.create();
+EntityBase.prototype = {
+	
+	_gr: null,
+	_sysId: null,
+	_tableName : null,
+	_exists : false,
+	
+	initialize: function(tableName /* optional */, sysId /* optional */) {		
+		this.arrayUtil = new global.ArrayUtil();
+		this._initialize(tableName, sysId);
+	},
+	 
+	baseInit : function() {
+
+		if(this.isObject(this._gr)){
+			this.setGlideRecord(this._gr);
+		}
+		else if(this._sysId && this.isString(this._sysId)){
+			if(this._tableName && this.isString(this._tableName)) {
+				this.set(this._sysId, this._tableName);
+			}
+			else{
+				this.setSysId(this._sysId);
+			}
+		}
+		else if(this._tableName && this.isString(this._tableName)){
+			this.setTableName(this._tableName);
+		}
+	},
+	
+	/**
+ 	* Gets the under laying GlideRecord
+ 	*
+ 	* @return The the GlideeEcord
+ 	*/	
+	getGlideRecord: function() {
+		return this._gr;
+	},
+
+	
+	/**
+ 	* Gets the table that the entity is located in.
+ 	*
+ 	* @return The table name in string format.
+ 	*/
+	getTable: function() {
+		if(this._gr)
+			return this._gr.getTableName();
+		else if(this._tableName)
+			return this._tableName;
+
+		return null;
+	},
+	
+	
+	/**
+ 	* Gets the number of the entity
+ 	*
+ 	* @return The number of the entity in string format.
+ 	*/
+	getNumber: function() {
+		return this._gr.getValue('number');
+	},
+	
+	
+	/**
+ 	* Get a value on the entity from a the property name.
+ 	*
+	* @param field The name of the propertiy that will be fetched.
+ 	* @return The value of the property.
+ 	*/	
+	getValue : function(field) {
+		return this._gr.getValue(field);
+	},
+	
+	/**
+ 	* Get a sys_id on the entity.
+ 	*
+ 	* @return The sys_id of the entity.
+ 	*/	
+	getSysId : function() {
+		return this._sysId;
+	},
+	
+	/**
+ 	* Sets the GlideRecord to the entity from a sys_id
+ 	*
+ 	* @param sysId The sysId of a glide record
+	* @param tableName The table name of the record
+ 	* @return Returns the GlideRecord
+ 	*/
+	set: function(sysId, tableName) {
+		gs.info('set : ' + sysId + ' ' + tableName);
+		this._tableName = tableName;
+		this._sysId = sysId;
+		
+		this._initGr();
+	},
+
+	
+	/**
+ 	* Sets the GlideRecord to the entity from a GlideRecord
+ 	*
+ 	* @param gr The GlideRecord to the set on the entity.
+ 	* @return Returns the GlideRecord
+ 	*/
+	setGlideRecord : function(gr) {
+		this._sysId = gr.getValue('sys_id');
+		this._tableName = gr.getTableName();
+		this._initGr();
+	},
+	
+	/**
+ 	* Sets the table name to the enity
+ 	*
+	* @param tableName The table name of the record
+ 	* @return Returns the GlideRecord
+ 	*/
+	setTableName: function(tableName) {
+		this._tableName = tableName;
+		return this._initGr();
+	},
+	
+	/**
+ 	* Sets the table name to the enity
+ 	*
+	* @param tableName The table name of the record
+ 	* @return Returns the GlideRecord
+ 	*/
+	setSysId: function(sysId) {
+		this._sysId = sysId;
+		return this._initGr();
+	},
+	
+	_initGr: function() {
+		if(this._sysId && this._tableName) {
+			
+			var grTmp = new GlideRecord(this._tableName);
+			grTmp.get(this._sysId);
+			this._gr = grTmp;
+			this._exists = true;
+			
+			gs.debug('_initGr exists : ' +  this._exists);
+			
+			return this._gr;
+		}
+		
+		this._exists = false;
+		gs.debug('_initGr exists : ' +  this._exists);
+		
+		return null;
+	},
+
+	/**
+ 	* Sets values on the entity from a JSON object, It will update the underlaying GlideRecord.
+ 	*
+	* @param properties The properties that will be set on the entity. 
+ 	* @return True if the update went well, otherwise false.
+ 	*/
+	setValues: function(properties) {
+		
+		for (var field in properties) {
+			if (this._gr.isValidField(field)) {
+				this._gr.setValue(field, properties[field]);
+			}
+		}
+		
+		return this._gr.update();
+	},
+	
+	
+	/**
+ 	* Sets value on the entity from a JSON object, It will update the underlaying GlideRecord.
+ 	*
+	* @param name The name of the propertiy that should be set.
+	* @param value Tthe value the shgould be set.
+ 	* @return True if the update went well, otherwise false.
+ 	*/
+	setValue : function(name, value) {
+		return this._gr.setValue(name, value);
+	},
+	
+	
+	/**
+ 	* Created a new GlideRecord from the JSON properties
+ 	*
+ 	* @param properties The properties that will be instanciated on the entity. 
+ 	* @return Returns the GlideRecord that are created.
+ 	*/
+	createGlideRecord: function(properties) {
+		
+		this._gr.newRecord();
+		
+		for (var fieldName in properties) {
+			if (this._gr.isValidField(fieldName)) {
+				this._gr[fieldName] = properties[fieldName];
+			}
+		}
+
+		var sysId = this._gr.insert();
+		
+		if (sysId) {
+			this._gr = new GlideRecord(this.tableName);
+			this._gr.get(sysId);
+			this._sysId = sysId;
+			this._exists = true;
+			return this._gr;
+		}
+		
+		return null;
+	},
+	
+	
+	/**
+ 	* Updates the entity to the database
+ 	*
+ 	* @return The result of the update
+ 	*/	
+	update : function() {
+		return this._gr.update();
+	},
+		
+	/** Delete the entity from the database
+ 	*
+ 	* @return The result of the delete
+ 	*/	
+	deleteRecord : function() {
+		return this._gr.deleteRecord();
+	},
+	
+ 	/** Gets the string reprecentation of the entity.
+ 	*
+ 	* @return The string identifier the entity.
+ 	*/	
+	toString : function (){		
+		return '[' + this.type + '] ' + (this._gr ? this._gr.getValue('sys_id') : 'null');
+	},
+	
+	/**
+ 	* Check if the enity exist
+ 	*
+ 	* @return True or false . dependning on if the enity has a gr and sys_id
+ 	*/	
+	exists : function ()  {
+		
+		if(this._exists)
+			return true;
+		
+		if(!this._sysId)
+			return false;
+		
+		if(!this._gr)
+			return false;
+
+		return this._gr.isValidRecord();
+	},
+	
+	isObject : function (value) {
+		return value == '[object GlideRecord]';
+	},
+	
+	isString : function (value) {
+		return typeof value === 'string' || value instanceof String;
+	},
+	
+	printDebug : function() {
+		var output = '';
+		for (var property in this) {
+		  output += property + ': ' + this[property]+'; ';
+		}
+		
+		gs.debug(output);
+	},
+	
+	printGr : function () {
+		gs.debug(JSON.stringify(this._gr));
+	},
+	
+	type: 'EntityBase'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-27 12:09:30</sys_created_on>
+        <sys_id>6373229fdb9d2300a94e14613996196b</sys_id>
+        <sys_mod_count>71</sys_mod_count>
+        <sys_name>EntityBase</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_script_include_6373229fdb9d2300a94e14613996196b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-06 20:16:24</sys_updated_on>
+    </sys_script_include>
+</record_update>

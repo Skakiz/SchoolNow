@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Principal" max_length="40" name="x_287904_schoolnow_m2m_users_schools" type="collection">
+        <element display="true" label="User" max_length="32" name="principal" reference="sys_user" reference_qual="roles=x_287904_schoolnow.Principal^EQ" reference_qual_condition="roles=x_287904_schoolnow.Principal^EQ" type="reference"/>
+        <element label="School" max_length="32" name="school" reference="x_287904_schoolnow_school" type="reference"/>
+        <index name="index">
+            <element name="principal"/>
+        </index>
+        <index name="index2">
+            <element name="school"/>
+        </index>
+    </element>
+</database>

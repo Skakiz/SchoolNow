@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="School" max_length="40" name="x_287904_schoolnow_school" type="collection">
+        <element label="Description" max_length="1000" name="description" type="string"/>
+        <element label="Educators Group" max_length="32" name="educators_group" reference="sys_user_group" type="reference"/>
+        <element label="Head Principal" mandatory="true" max_length="32" name="head_principal" reference="sys_user" reference_qual="roles=x_287904_schoolnow.Principal^EQ" reference_qual_condition="roles=x_287904_schoolnow.Principal^EQ" type="reference"/>
+        <element label="Janitor Group" max_length="32" name="janitor_group" reference="sys_user_group" type="reference"/>
+        <element label="Kitchen Staff Group" max_length="32" name="kitchen_staff_group" reference="sys_user_group" type="reference"/>
+        <element label="Location" max_length="32" name="location" reference="cmn_location" type="reference"/>
+        <element display="true" label="Name" mandatory="true" max_length="100" name="name" type="string"/>
+        <element label="Principal Group" max_length="32" name="principal_group" reference="sys_user_group" type="reference"/>
+        <element choice="1" label="Type" mandatory="true" max_length="256" name="type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Daycare" sequence="1" value="daycare"/>
+                <element inactive_on_update="false" label="Preschool" sequence="5" value="preschool"/>
+                <element inactive_on_update="false" label="Junior level" sequence="10" value="juniorlevel"/>
+                <element inactive_on_update="false" label="Secondary" sequence="20" value="secondary"/>
+                <element inactive_on_update="false" label="Elementary" sequence="25" value="elementary"/>
+                <element inactive_on_update="false" label="High School" sequence="30" value="highschool"/>
+                <element inactive_on_update="false" label="Senior High School" sequence="40" value="seniorhighschool"/>
+                <element inactive_on_update="false" label="College" sequence="50" value="college"/>
+            </choice>
+        </element>
+        <index name="index">
+            <element name="educators_group"/>
+        </index>
+        <index name="index2">
+            <element name="janitor_group"/>
+        </index>
+        <index name="index3">
+            <element name="kitchen_staff_group"/>
+        </index>
+        <index name="index4">
+            <element name="principal_group"/>
+        </index>
+        <index name="index5">
+            <element name="location"/>
+        </index>
+        <index name="index6">
+            <element name="head_principal"/>
+        </index>
+    </element>
+</database>

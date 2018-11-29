@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_287904_schoolnow_school</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>School [B:I] - Create Groups </name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	// Add your code here
+	var name = current.getValue('name');
+	
+	gs.debug('School [B:I] - Create Groups, name : ' + name);
+	
+	if(name) {
+		var util = new x_287904_schoolnow.GroupUtil();
+		var principalSysId = util.createGroup(current.getValue('name') + " Principal", "SchoolNow Principals", "This group is auto generated and populated by SchoolNow", current.getValue('head_principal'));
+		
+		var educatorSysId = util.createGroup(current.getValue('name') + " Educator" , "SchoolNow Educators", "This group is auto generated and populated by SchoolNow", current.getValue('head_principal'));
+		var kitchenStaffSysId = util.createGroup(current.getValue('name') + " Kitch Staff" , "SchoolNow Kitchen Staff", "This group is auto generated and populated by SchoolNow", current.getValue('head_principal'));
+		var JanitorSysId = util.createGroup(current.getValue('name') + " Janitor" , "SchoolNow Janitor", "This group is auto generated and populated by SchoolNow", current.getValue('head_principal'));
+		
+		util.addUserGroup(current.getValue('head_principal'), principalSysId);
+		util.addUserGroup(current.getValue('head_principal'), educatorSysId);
+		util.addUserGroup(current.getValue('head_principal'), kitchenStaffSysId);
+		util.addUserGroup(current.getValue('head_principal'), JanitorSysId);
+		
+		current.setValue('principal_group', principalSysId);
+		current.setValue('educators_group', educatorSysId);
+		current.setValue('kitchen_staff_group', kitchenStaffSysId);
+		current.setValue('janitor_group', JanitorSysId);
+
+		util.addToM2M('principal',current.getValue('head_principal'), 'school', current.getValue('sys_id'), 'x_287904_schoolnow_m2m_users_schools');
+
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-26 10:24:45</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>adc1410bdb912300a94e14613996195a</sys_id>
+        <sys_mod_count>7</sys_mod_count>
+        <sys_name>School [B:I] - Create Groups </sys_name>
+        <sys_overrides/>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_script_adc1410bdb912300a94e14613996195a</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-27 11:57:22</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=adc1410bdb912300a94e14613996195a"/>
+</record_update>

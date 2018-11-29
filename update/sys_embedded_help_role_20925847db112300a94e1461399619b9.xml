@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_embedded_help_role">
+    <sys_embedded_help_role action="INSERT_OR_UPDATE">
+        <order>1000</order>
+        <role display_value="x_287904_schoolnow.Educator" name="x_287904_schoolnow.Educator">60729847db112300a94e146139961925</role>
+        <sys_class_name>sys_embedded_help_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-10-26 06:57:33</sys_created_on>
+        <sys_id>20925847db112300a94e1461399619b9</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>60729847db112300a94e146139961925</sys_name>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_embedded_help_role_20925847db112300a94e1461399619b9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-10-26 06:57:33</sys_updated_on>
+    </sys_embedded_help_role>
+</record_update>

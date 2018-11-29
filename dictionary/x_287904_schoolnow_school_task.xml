@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element audit="true" extends="task" label="School task" max_length="40" name="x_287904_schoolnow_school_task" sizeclass="7" type="collection">
+        <element label="Book" max_length="32" name="book" reference="x_287904_schoolnow_book" type="reference"/>
+        <element label="Create homework" max_length="40" name="homework" type="boolean"/>
+        <element label="Lesson" mandatory="true" max_length="32" name="lesson" reference="x_287904_schoolnow_lesson" type="reference"/>
+        <element label="Pages" max_length="32" name="pages" type="string"/>
+        <element label="Show in lessson" max_length="40" name="show_in_lessson" type="boolean"/>
+    </element>
+</database>

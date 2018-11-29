@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="show_in_lessson" label="Show in lessson" language="en" table="x_287904_schoolnow_school_task">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>show_in_lessson</element>
+            <help/>
+            <hint/>
+            <label>Show in lessson</label>
+            <language>en</language>
+            <name>x_287904_schoolnow_school_task</name>
+            <plural>Show in lesssons</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2018-11-15 20:09:47</sys_created_on>
+            <sys_id>e0b7c2a9dbb12300a94e146139961968</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Show in lessson</sys_name>
+            <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+            <sys_update_name>sys_documentation_x_287904_schoolnow_school_task_show_in_lessson_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2018-11-15 20:09:47</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

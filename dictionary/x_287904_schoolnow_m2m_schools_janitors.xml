@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Janitor" max_length="40" name="x_287904_schoolnow_m2m_schools_janitors" type="collection">
+        <element display="true" label="Janitor" max_length="32" name="janitor" reference="sys_user" type="reference"/>
+        <element label="School" max_length="32" name="school" reference="x_287904_schoolnow_school" type="reference"/>
+        <index name="index">
+            <element name="school"/>
+        </index>
+        <index name="index2">
+            <element name="janitor"/>
+        </index>
+    </element>
+</database>

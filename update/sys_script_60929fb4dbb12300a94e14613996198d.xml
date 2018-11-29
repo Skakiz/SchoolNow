@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script">
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>false</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>x_287904_schoolnow_class</collection>
+        <condition/>
+        <description/>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>Class [B:I] Create Group</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous /*null when async*/) {
+
+	var name = current.getValue('name');
+	
+	gs.debug('School [B:I] - Create Groups, name : ' + name);
+		
+	if(name) {
+		var util = new x_287904_schoolnow.GroupUtil();
+		var educator = current.educator.getRefRecord();
+		
+		var classSysId = util.createGroup(current.getDisplayValue('school') + ' ' + current.getDisplayValue('cohort') + ' ' + current.getValue('name') + " Class", "SchoolNow Class", "This group is auto generated and populated by SchoolNow", educator.getValue('user'));
+		util.addUserGroup(educator.getValue('user'), classSysId);
+		current.setValue('servicenow_group', classSysId);
+	}
+
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-11-13 17:43:21</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>60929fb4dbb12300a94e14613996198d</sys_id>
+        <sys_mod_count>6</sys_mod_count>
+        <sys_name>Class [B:I] Create Group</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_script_60929fb4dbb12300a94e14613996198d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-13 18:04:13</sys_updated_on>
+        <template/>
+        <when>before</when>
+    </sys_script>
+    <sys_translated_text action="delete_multiple" query="documentkey=60929fb4dbb12300a94e14613996198d"/>
+</record_update>

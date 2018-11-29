@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Class" max_length="40" name="x_287904_schoolnow_class" type="collection">
+        <element label="Cohort" mandatory="true" max_length="32" name="cohort" reference="x_287904_schoolnow_cohort" type="reference"/>
+        <element label=" Class manager" mandatory="true" max_length="32" name="educator" reference="x_287904_schoolnow_m2m_schools_educator" type="reference"/>
+        <element label="Home classroom" max_length="32" name="home_classroom" reference="x_287904_schoolnow_classroom" type="reference"/>
+        <element display="true" label="Name" mandatory="true" max_length="32" name="name" type="string"/>
+        <element label="School" mandatory="true" max_length="32" name="school" reference="x_287904_schoolnow_school" type="reference"/>
+        <element label="ServiceNow Group" max_length="32" name="servicenow_group" reference="sys_user_group" reference_qual="typeLIKE3e74dc0bdb112300a94e146139961920^EQ" reference_qual_condition="typeLIKE3e74dc0bdb112300a94e146139961920^EQ" type="reference"/>
+        <index name="index">
+            <element name="home_classroom"/>
+        </index>
+        <index name="index2">
+            <element name="servicenow_group"/>
+        </index>
+        <index name="index3">
+            <element name="school"/>
+        </index>
+        <index name="index4">
+            <element name="cohort"/>
+        </index>
+        <index name="index5">
+            <element name="educator"/>
+        </index>
+    </element>
+</database>

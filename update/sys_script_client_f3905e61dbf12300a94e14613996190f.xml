@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_script_client">
+    <sys_script_client action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <applies_extended>false</applies_extended>
+        <condition/>
+        <description/>
+        <field>active</field>
+        <global>true</global>
+        <isolate_script>true</isolate_script>
+        <messages/>
+        <name>new School task</name>
+        <order/>
+        <script><![CDATA[function onLoad() {
+	//Type appropriate comment here, and begin script below
+	if(g_form.isNewRecord()) {
+		g_form.setValue('assignment_group', g_scratchpad.assignment_group);
+		g_form.setValue('subject', g_scratchpad.subject);
+		g_form.setValue('assigned_to', g_scratchpad.assigned_to);
+		g_form.setValue('book', g_scratchpad.book);
+		g_form.setValue('pages', g_scratchpad.pages);
+		g_form.setValue('due_date', g_scratchpad.due_date);
+		g_form.setValue('expected_start', g_scratchpad.expected_start);
+		g_form.setValue('short_description', g_scratchpad.short_description);
+		
+	}
+}]]></script>
+        <sys_class_name>sys_script_client</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2018-11-15 20:53:11</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>f3905e61dbf12300a94e14613996190f</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>new School task</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="SchoolNow" source="x_287904_schoolnow">06819047db112300a94e1461399619b7</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="SchoolNow">06819047db112300a94e1461399619b7</sys_scope>
+        <sys_update_name>sys_script_client_f3905e61dbf12300a94e14613996190f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2018-11-15 21:08:23</sys_updated_on>
+        <table>x_287904_schoolnow_school_task</table>
+        <type>onLoad</type>
+        <ui_type>10</ui_type>
+        <view/>
+    </sys_script_client>
+</record_update>

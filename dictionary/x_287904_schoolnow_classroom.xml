@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Classroom" max_length="40" name="x_287904_schoolnow_classroom" type="collection">
+        <element label="Beteckning" max_length="32" name="beteckning" type="string"/>
+        <element display="true" label="Name" mandatory="true" max_length="32" name="name" type="string"/>
+        <element label="Responsible" max_length="32" name="responsible" reference="sys_user" reference_qual="roles=x_287904_schoolnow.Educator^ORroles=x_287904_schoolnow.Janitor^ORroles=x_287904_schoolnow.Principal^EQ" reference_qual_condition="roles=x_287904_schoolnow.Educator^ORroles=x_287904_schoolnow.Janitor^ORroles=x_287904_schoolnow.Principal^EQ" type="reference"/>
+        <element label="School" mandatory="true" max_length="32" name="school" reference="x_287904_schoolnow_school" type="reference"/>
+        <index name="index">
+            <element name="school"/>
+        </index>
+        <index name="index2">
+            <element name="responsible"/>
+        </index>
+    </element>
+</database>

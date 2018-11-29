@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Student" max_length="40" name="x_287904_schoolnow_m2m_users_class" type="collection">
+        <element label="Class" max_length="32" name="class" reference="x_287904_schoolnow_class" type="reference"/>
+        <element label="User" max_length="32" name="student" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="student"/>
+        </index>
+        <index name="index2">
+            <element name="class"/>
+        </index>
+    </element>
+</database>

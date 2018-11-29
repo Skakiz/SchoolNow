@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Educator" max_length="40" name="x_287904_schoolnow_m2m_schools_educator" type="collection">
+        <element label="School" max_length="32" name="school" reference="x_287904_schoolnow_school" type="reference"/>
+        <element display="true" label="Educator" max_length="32" name="user" reference="sys_user" type="reference"/>
+        <index name="index">
+            <element name="school"/>
+        </index>
+        <index name="index2">
+            <element name="user"/>
+        </index>
+    </element>
+</database>
